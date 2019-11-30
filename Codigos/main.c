@@ -1,5 +1,5 @@
 #include <msp430g2553.h>
-
+extern void funcao (void);
 // define the P1 port bitmask
 //----------------------------------
 #define LED             0x01    //BIT0
@@ -725,29 +725,30 @@ void init_WDT(void) {
 // setup Port 1 GPIO pins
 void init_P1(void) {
 
-    P1DIR |= LED;       // LED indicator
-    P1OUT |= LED;
+    funcao();
+    //P1DIR |= LED;       // LED indicator
+    //P1OUT |= LED;
 
-    P1SEL |= SPEAKER;   // speaker
-    P1DIR |= SPEAKER;
+    //P1SEL |= SPEAKER;   // speaker
+    //P1DIR |= SPEAKER;
 
     // All remaining GPIOs are already inputs after reset
 
     // Reset button:
     // 1x press restarts the song
     // 2x press changes songs
-    P1OUT |= RESET_BUTTON;  // pullup
-    P1REN |= RESET_BUTTON;  // enable pullup resistor
-    P1IES |= RESET_BUTTON;  // set for 1->0 transition
-    P1IFG &= ~RESET_BUTTON; // clear interrupt flag
-    P1IE  |= RESET_BUTTON;  // enable interrupt
+    //P1OUT |= RESET_BUTTON;  // pullup
+    //P1REN |= RESET_BUTTON;  // enable pullup resistor
+    //P1IES |= RESET_BUTTON;  // set for 1->0 transition
+    //P1IFG &= ~RESET_BUTTON; // clear interrupt flag
+    //P1IE  |= RESET_BUTTON;  // enable interrupt
 
     // Play/Pause button:
-    P1OUT |= PLAY_BUTTON;   // pullup
-    P1REN |= PLAY_BUTTON;   // enable pullup resistor
-    P1IES |= PLAY_BUTTON;   // set for 1->0 transition
-    P1IFG &= ~PLAY_BUTTON;  // clear interrupt flag
-    P1IE  |= PLAY_BUTTON;   // enable interrupt
+    //P1OUT |= PLAY_BUTTON;   // pullup
+    //P1REN |= PLAY_BUTTON;   // enable pullup resistor
+    //P1IES |= PLAY_BUTTON;   // set for 1->0 transition
+    //P1IFG &= ~PLAY_BUTTON;  // clear interrupt flag
+    //P1IE  |= PLAY_BUTTON;   // enable interrupt
 
     // Slower Tempo button:
     P1OUT |= SLOW_BUTTON;   // pullup
